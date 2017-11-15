@@ -34,17 +34,16 @@ RUN ls -l $JBOSS_HOME \
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
-# Install phantomjs on centos:7 (is used by WTP )
-#RUN set -x \
-#	&& apt-get update \
-#	&& apt-get -y install phantomjs
+# Install phantomjs (is used by WTP )
+RUN set -x \
+	&& apt-get update \
+	&& apt-get -y install phantomjs
 
 # start elastic service 1.7.3
-#ADD elasticsearch/elasticsearch-1.7.3.deb ./
-#RUN dpkg -i elasticsearch-1.7.3.deb
-#ADD elasticsearch/elasticsearch.yml /etc/elasticsearch/
-#RUN service elasticsearch start
-
+# curl -XGET 172.17.0.2:9200
+ADD elasticsearch/elasticsearch-1.7.3.deb ./
+RUN dpkg -i elasticsearch-1.7.3.deb
+ADD elasticsearch/elasticsearch.yml /etc/elasticsearch/
 
 # wildfly modules
 ADD brandmaker /opt/brandmaker
@@ -60,11 +59,10 @@ ADD deployments/*.ear /opt/jboss/wildfly/standalone/deployments/
 ADD deployments/*.war /opt/jboss/wildfly/standalone/deployments/
 
 RUN ls -l $JBOSS_HOME \    
-    && chown -R jboss ${JBOSS_HOME} \
-    && chmod -R g+rw ${JBOSS_HOME}
+    && chown -R jboss:jboss ${JBOSS_HOME} \
+    && chmod -R 777 ${JBOSS_HOME}
 
 RUN ls -l $JBOSS_HOME \
-    && ls -l /opt/jboss/wildfly/standalone \
     && ls -l /opt/jboss/wildfly/standalone/deployments
 
 USER jboss
@@ -75,4 +73,4 @@ RUN ls -l /opt/jboss/wildfly/standalone/deployments
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+CMD service elasticsearch start && /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -c standalone-full_serenity.xml
