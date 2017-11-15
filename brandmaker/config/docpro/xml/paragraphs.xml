@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<paragraphs>
+
+ <paragraph>
+		<paragraph-name>coba</paragraph-name>
+		<description>coba paragraph used for replacements</description>
+		<button>coba</button>
+		<html-translation-start><![CDATA[<p class="coba">]]></html-translation-start>
+		<html-translation-end><![CDATA[</p>]]></html-translation-end>
+		<quark-translation><![CDATA[]]></quark-translation>
+		<!-- new paragraph (hard return)-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{n\}]]></search>
+			<replace><![CDATA[<\\n>]]></replace>
+		</html-to-quark>
+		<!-- discretionary hyphen (only shown when needed)-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{h\}]]></search>
+			<replace><![CDATA[<\\h>]]></replace>
+		</html-to-quark>
+		
+		<html-to-quark>
+			<search><![CDATA[(?i)(\[\[\{c\}\]\])|(\{c\})]]></search>
+			<replace><![CDATA[<\\c>]]></replace>
+		</html-to-quark>
+		
+		<!-- tab  with fckeditor-->
+		<html-to-quark>
+			<search><![CDATA[(?i)(\[\[\{t\}\]\])|(\{t\})]]></search>
+			<replace><![CDATA[<\\t>]]></replace>
+		</html-to-quark>
+		
+		<!-- nbsp -->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{nbs\}]]></search>
+			<replace><![CDATA[<\\#160>]]></replace>
+		</html-to-quark>
+		
+		<!-- html bullet point -->
+		<html-to-quark>
+			<search><![CDATA[(?i)&bull;]]></search>
+			<replace><![CDATA[<\\#0149>]]></replace>
+		</html-to-quark>		
+						
+				
+		<html-to-quark>
+			<search><![CDATA[\{\{tabulator\}\}]]></search>
+			<replace><![CDATA[<\\t>]]></replace>
+		</html-to-quark>
+		<!-- soft return (new line without new paragraph)-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{d\}]]></search>
+			<replace><![CDATA[<\\d>]]></replace>
+		</html-to-quark>
+		<!-- indent here - e.g. to keep alignment in bulleted lists -->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{i\}]]></search>
+			<replace><![CDATA[<\\i>]]></replace>
+		</html-to-quark>
+		<!-- figure space -->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{f\}]]></search>
+			<replace><![CDATA[<\\f>]]></replace>
+		</html-to-quark>
+		<!-- 1/8 space-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{ts\}]]></search>
+			<replace><![CDATA[<\\[>]]></replace>
+		</html-to-quark>		
+		<!-- 1/4 space-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{q\}]]></search>
+			<replace><![CDATA[<\\q>]]></replace>
+		</html-to-quark>
+		<!-- 1/2 space-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{hs\}]]></search>
+			<replace><![CDATA[<h050> <h100>]]></replace>
+		</html-to-quark>
+		<!-- em dash (long dash)-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{md\}]]></search>
+			<replace><![CDATA[<\\_>]]></replace>
+		</html-to-quark>
+		<!-- em dash (short dash)-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{nd\}]]></search>
+			<replace><![CDATA[<\\#150>]]></replace>
+		</html-to-quark>
+		<!-- bulletpoint 80% black-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{b\}]]></search>
+			<replace><![CDATA[\‡]]></replace>
+		</html-to-quark>
+				<html-to-quark>
+			<search><![CDATA[(?i)\{bb\}]]></search>
+			<replace><![CDATA[<s80h100cK>\‡<s\$c\$>]]></replace>
+			<!--<replace><![CDATA[<s80t\$h100cK>\‡<s\$c\$>]]></replace>-->
+		</html-to-quark>
+		<!-- bulletpoint 100/100 red -->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{br\}]]></search>
+			<replace><![CDATA[<s100c\"100M,100Y\">‡<c\$s\$>]]></replace>
+		</html-to-quark>
+		<!-- bulletpoint HKS 13 -->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{bh\}]]></search>
+			<replace><![CDATA[<s100c\"HKS 13\">‡<c\$s\$>]]></replace>
+		</html-to-quark>
+		<html-to-quark>
+			<search><![CDATA[(?i)\{au\}]]></search>
+			<replace><![CDATA[\„]]></replace>
+		</html-to-quark>
+		<html-to-quark>
+			<search><![CDATA[(?i)\{ao\}]]></search>
+			<replace><![CDATA[\“]]></replace>
+		</html-to-quark>
+				
+		<!-- breakable space-->
+		<html-to-quark>
+			<search><![CDATA[(?i)\{u\}]]></search>
+			<replace><![CDATA[<k\-40> <k\$>]]></replace>
+		</html-to-quark>
+		<rule><![CDATA[[Priority]10[QuarkStyle](?i)(_NO_RULE_)[Font](?i)(.*)[Indent](.*)[FirstChar](.*)]]></rule>
+	</paragraph>
+
+
+
+	
+</paragraphs>

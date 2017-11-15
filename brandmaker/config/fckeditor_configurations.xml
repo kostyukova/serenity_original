@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fck-configurations>
+	<fck-config id="101" name="config1">
+		<fck-config-filename>fckconfig_ey_101.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="102" name="config2">
+		<fck-config-filename>fckconfig_ey_102.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="103" name="config3">
+		<fck-config-filename>fckconfig_ey_103.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="104" name="config4">
+		<fck-config-filename>fckconfig_ey_104.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="105" name="config5">
+		<fck-config-filename>fckconfig_ey_105.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="106" name="config6">
+		<fck-config-filename>fckconfig_ey_106.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="107" name="config7">
+		<fck-config-filename>fckconfig_ey_107.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="108" name="config8">
+		<fck-config-filename>fckconfig_ey_108.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="109" name="config9">
+		<fck-config-filename>fckconfig_ey_109.js</fck-config-filename>
+	</fck-config>
+	<fck-config id="110" name="config10">
+		<fck-config-filename>fckconfig_ey_110.js</fck-config-filename>
+	</fck-config>
+</fck-configurations>
