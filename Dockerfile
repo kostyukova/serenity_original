@@ -6,6 +6,7 @@ FROM openjdk:8-jdk
 ENV WILDFLY_VERSION 10.1.0.Final
 ENV WILDFLY_SHA1 9ee3c0255e2e6007d502223916cefad2a1a5e333
 ENV JBOSS_HOME /opt/jboss/wildfly
+ENV ELASTIC_HOME /opt/elasticsearch-1.7.3
 
 # Create a user and group used to launch processes
 # The user ID 1000 is the default for the first "regular" user on Fedora/RHEL,
@@ -41,9 +42,8 @@ RUN set -x \
 
 # start elastic service 1.7.3
 # curl -XGET 172.17.0.2:9200
-ADD elasticsearch/elasticsearch-1.7.3.deb ./
-RUN dpkg -i elasticsearch-1.7.3.deb
-ADD elasticsearch/elasticsearch.yml /etc/elasticsearch/
+ADD elasticsearch/elasticsearch-1.7.3.zip ./
+RUN unzip elasticsearch-1.7.3.zip -d /opt
 
 # wildfly modules
 ADD brandmaker /opt/brandmaker
@@ -55,17 +55,21 @@ ADD standalone.conf /opt/jboss/wildfly/bin
 ADD standalone-full_serenity.xml /opt/jboss/wildfly/standalone/configuration
 
 # deployments
-ADD deployments/*.ear /opt/jboss/wildfly/standalone/deployments/
-ADD deployments/*.war /opt/jboss/wildfly/standalone/deployments/
+ADD deployments/* /opt/jboss/wildfly/standalone/deployments/
 
 RUN ls -l $JBOSS_HOME \    
     && chown -R jboss:jboss ${JBOSS_HOME} \
     && chmod -R 777 ${JBOSS_HOME}
 
+RUN ls -l $ELASTIC_HOME \    
+    && chown -R jboss:jboss ${ELASTIC_HOME} \
+    && chmod -R 777 ${ELASTIC_HOME}
+
 RUN ls -l $JBOSS_HOME \
     && ls -l /opt/jboss/wildfly/standalone/deployments
 
 USER jboss
+
 # Expose the ports we're interested in
 EXPOSE 8080
 
@@ -73,4 +77,4 @@ RUN ls -l /opt/jboss/wildfly/standalone/deployments
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
-CMD service elasticsearch start && /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -c standalone-full_serenity.xml
+CMD /opt/elasticsearch-1.7.3/bin/elasticsearch & /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -c standalone-full_serenity.xml

@@ -533,6 +533,11 @@
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
                 </security-domain>
+                <security-domain name="MaintenanceOperations" cache-type="default">
+                    <authentication>
+                        <login-module code="com.brandmaker.dbupdate.manager.security.MaintenanceOperationsLoginModule" flag="required"/>
+                    </authentication>
+                </security-domain>
                 <security-domain name="BrandMaker" cache-type="default">
                     <authentication>
                         <login-module code="com.brandmaker.security.jaas.BrandMakerLoginModule" flag="required"/>
@@ -588,7 +593,7 @@
         </interface>
     </interfaces>
 
-    <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
+    <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:10000}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
         <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
